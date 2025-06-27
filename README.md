@@ -21,6 +21,7 @@
 | Check TGM On:    |
 | -------- | 
 | [trksyln.net](https://trksyln.net/tgmacro)  | 
+| [gettgmacro.com](https://gettgmacro.com)  | 
 | [Sourceforge](https://sourceforge.net/projects/tmacro/) | 
 
 
