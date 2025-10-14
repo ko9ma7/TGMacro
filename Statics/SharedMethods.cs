@@ -41,8 +41,10 @@ namespace TGMacro.Statics
                     return modifierKey.Control;
                 case CSInputs.Enums.KeyboardKeys.Alt:
                     return modifierKey.Alt;
-                case CSInputs.Enums.KeyboardKeys.Shift:
-                    return modifierKey.Shift;
+                case CSInputs.Enums.KeyboardKeys.LeftShift:
+                    return modifierKey.LeftShift;
+                case CSInputs.Enums.KeyboardKeys.RightShift:
+                    return modifierKey.LeftShift;
                 default:
                     return false;
             }

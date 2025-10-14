@@ -312,14 +312,14 @@ namespace TGMacro
                 addAction(new Actions.MouseKeyAction()
                 {
                     MouseKey = data.Key,
-                    KeyMethod = data.Flags == CSInputs.Enums.KeyFlags.Up ? Enums.KeyPressMethods.Up : Enums.KeyPressMethods.Down,
+                    KeyMethod = data.Flags == CSInputs.Enums.KeyFlags.KeyUp ? Enums.KeyPressMethods.Up : Enums.KeyPressMethods.Down,
                     MousePos = cbMousePositioning.SelectedIndex == 0 ? Cursor.Position : new Point(data.PositionRelative.X, data.PositionRelative.Y),
                     MouseMoveMethod = cbMousePositioning.SelectedIndex == 0 ? CSInputs.Enums.MousePositioning.Absolute : CSInputs.Enums.MousePositioning.Relative
                 });
                 st.Restart();
             }
 
-            if (IsListeningForKey && cbTriggerType.SelectedIndex == 0 && data.Flags == CSInputs.Enums.KeyFlags.Up)
+            if (IsListeningForKey && cbTriggerType.SelectedIndex == 0 && data.Flags == CSInputs.Enums.KeyFlags.KeyUp)
             {
                 SetTriggerPrimayKeyIfPressed(modifierKey);
                 SecondaryMouseKey = data.Key;
@@ -332,9 +332,13 @@ namespace TGMacro
             {
                 PrimaryKey = CSInputs.Enums.KeyboardKeys.Ctrl;
             }
-            else if (modifierKey.Shift)
+            else if (modifierKey.LeftShift)
             {
-                PrimaryKey = CSInputs.Enums.KeyboardKeys.Shift;
+                PrimaryKey = CSInputs.Enums.KeyboardKeys.LeftShift;
+            }
+            else if (modifierKey.RightShift)
+            {
+                PrimaryKey = CSInputs.Enums.KeyboardKeys.RightShift;
             }
             else if (modifierKey.Alt)
             {
@@ -347,7 +351,7 @@ namespace TGMacro
         }
         private void KeyboardInputs(KeyboardData data, ref ModifierKey modifierKey)
         {
-            if (modifierKey.Control && data.Key == CSInputs.Enums.KeyboardKeys.F10 && data.Flags == CSInputs.Enums.KeyFlags.Up)
+            if (modifierKey.Control && data.Key == CSInputs.Enums.KeyboardKeys.F10 && data.Flags == CSInputs.Enums.KeyFlags.KeyUp)
             {
                 Record();
             }
@@ -364,7 +368,7 @@ namespace TGMacro
                     addAction(new Actions.WaitAction() { SleepAmount = (int)st.ElapsedMilliseconds });
                 }
 
-                if (modifierKey.Windows && data.Flags == CSInputs.Enums.KeyFlags.Up)
+                if ((modifierKey.LeftWindows || modifierKey.RightWindows) && data.Flags == CSInputs.Enums.KeyFlags.KeyUp)
                 {
                     addAction(new Actions.KeyboardKeyAction()
                     {
@@ -377,7 +381,7 @@ namespace TGMacro
                     addAction(new Actions.KeyboardKeyAction()
                     {
                         KeyboardKey = data.Key,
-                        KeyMethod = data.Flags == CSInputs.Enums.KeyFlags.Up ? Enums.KeyPressMethods.Up : Enums.KeyPressMethods.Down,
+                        KeyMethod = data.Flags == CSInputs.Enums.KeyFlags.KeyUp ? Enums.KeyPressMethods.Up : Enums.KeyPressMethods.Down,
                     });
                 }
 
@@ -403,11 +407,11 @@ namespace TGMacro
             }
             if (cbTriggerType.SelectedIndex == 1)
             {
-                if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.C && data.Flags == CSInputs.Enums.KeyFlags.Down)
+                if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.C && data.Flags == CSInputs.Enums.KeyFlags.KeyDown)
                 {
                     pnlSelectedColor.BackColor = Statics.SharedMethods.GetColorAt(Cursor.Position);
                 }
-                if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.X && data.Flags == CSInputs.Enums.KeyFlags.Down)
+                if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.X && data.Flags == CSInputs.Enums.KeyFlags.KeyDown)
                 {
                     mPosX.Value = Cursor.Position.X;
                     mPosY.Value = Cursor.Position.Y;

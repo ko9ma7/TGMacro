@@ -254,7 +254,7 @@ namespace TGMacro
 
         private void InputListener_MouseInputs(MouseData data, ref ModifierKey modifierKey)
         {
-            if (IsListeningForKey && (Enums.ActionTypes)cbActionType.SelectedIndex == Enums.ActionTypes.MouseButton && data.Flags == CSInputs.Enums.KeyFlags.Up)
+            if (IsListeningForKey && (Enums.ActionTypes)cbActionType.SelectedIndex == Enums.ActionTypes.MouseButton && data.Flags == CSInputs.Enums.KeyFlags.KeyUp)
             {
                 SecondaryMouseKey = data.Key;
                 IsListeningForKey = false;
@@ -262,7 +262,7 @@ namespace TGMacro
         }
         private void Hook_KeyboardInputs(KeyboardData data, ref ModifierKey modifierKey)
         {
-            if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.X && data.Flags == CSInputs.Enums.KeyFlags.Down)
+            if (modifierKey.Alt && data.Key == CSInputs.Enums.KeyboardKeys.X && data.Flags == CSInputs.Enums.KeyFlags.KeyDown)
             {
                 mPosX.Value = Cursor.Position.X;
                 mPosY.Value = Cursor.Position.Y;

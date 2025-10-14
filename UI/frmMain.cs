@@ -119,7 +119,7 @@ namespace TGMacro
 
         private void Hook_KeyboardInputs(KeyboardData data, ref ModifierKey modifierKey)
         {
-            if (data.Key == CSInputs.Enums.KeyboardKeys.Home && data.Flags == CSInputs.Enums.KeyFlags.Up)
+            if (data.Key == CSInputs.Enums.KeyboardKeys.Home && data.Flags == CSInputs.Enums.KeyFlags.KeyUp)
             {
                 Statics.AppSession.Enable = !Statics.AppSession.Enable;
                 checkEnableButton();
